@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - changeSet:
+      id: create_room_table
+      author: keyserfallin
+      changes:
+        - createTable:
+            tableName: room
+            columns:
+              - column:
+                  name: room_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: country_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: tinyint(1)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: insert_room
+      author: keyserfallin
+      comment: "Create room"
+      changes:
+        - insert:
+            tableName: room
+            columns:
+              - column:
+                  name: country_name
+                  value: "Russia"
+              - column:
+                  name: status
+                  value: 0
+        - insert:
+            tableName: room
+            columns:
+              - column:
+                  name: country_name
+                  value: "Belarus"
+              - column:
+                  name: status
+                  value: 0
+      rollback:
+        - delete:
+            tableName: room
+            where: country_name in ('Russia', 'Belarus', 'Japan')
