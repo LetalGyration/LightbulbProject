@@ -1,0 +1,53 @@
+<div>
+    <div *ngIf="currentRoom.id" class="edit-form">
+      <h4>Room</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Room name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentRoom.room_name"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentRoom.country_name"
+            name="description"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentRoom.status > 0 ? "On" : "Off" }}
+        </div>
+      </form>
+  
+      <button
+        class="badge badge-primary mr-2"
+        *ngIf="currentRoom.status"
+        (click)="updateStatus(false)"
+      >
+        Off
+      </button>
+      <button
+        *ngIf="!currentRoom.status"
+        class="badge badge-primary mr-2"
+        (click)="updateStatus(true)"
+      >
+        On
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentRoom.id">
+      <br />
+      <p>Cannot access this Tutorial...</p>
+    </div>
+  </div>

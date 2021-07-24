@@ -1,0 +1,35 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="title">Room name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            required
+            [(ngModel)]="room.room_name"
+            name="title"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Country name</label>
+          <input
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="room.country_name"
+            name="description"
+          />
+        </div>
+  
+        <button (click)="saveRoom()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Room was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newRoom()">Add</button>
+      </div>
+    </div>
+  </div>

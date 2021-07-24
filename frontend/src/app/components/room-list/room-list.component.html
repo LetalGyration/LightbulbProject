@@ -1,0 +1,42 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Room List</h4>
+      <div *ngIf="retrieveRooms()">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let room of rooms; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveRoom(room, i)"
+        >
+          {{ room.room_name }}
+        </li>
+      </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentRoom.id">
+        <h4>Room</h4>
+        <div>
+          <label><strong>Room name:</strong></label> {{ currentRoom.room_name }}
+        </div>
+        <div>
+          <label><strong>Country :</strong></label>
+          {{ currentRoom.country_name }}
+        </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentRoom.status > 0 ? "On" : "Off" }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/rooms/{{ currentRoom.id }}">
+          Connect
+        </a>
+      </div>
+  
+      <div *ngIf="!currentRoom">
+        <br />
+        <p>Please click on a Room...</p>
+      </div>
+    </div>
+  </div>
