@@ -11,6 +11,7 @@ import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/api")
 public class RoomController {
     RoomService service;
@@ -21,6 +22,7 @@ public class RoomController {
 
     @GetMapping(value = "/rooms")
     public List<Room> getAllRooms() {
+        System.out.println("Working");
         return service.getAllRooms();
     }
 
@@ -33,5 +35,10 @@ public class RoomController {
     @PostMapping(value = "/rooms")
     public Room addRoom(@Valid @RequestBody Room room) {
         return service.addRoom(room);
+    }
+
+    @PutMapping(value = "/rooms/{id}")
+    public void updateStatus(@PathVariable("id") @Min(1) int id, @RequestParam byte status) {
+        service.updateStatus(id, status);
     }
 }

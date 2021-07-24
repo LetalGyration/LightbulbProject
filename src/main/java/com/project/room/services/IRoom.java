@@ -9,4 +9,5 @@ public interface IRoom {
     List<Room> getAllRooms();
     Optional<Room> findById(int id);
     Room addRoom(Room room);
+    void updateStatus(int id, byte status);
 }

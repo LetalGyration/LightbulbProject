@@ -15,6 +15,11 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: room_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
                   name: country_name
                   type: varchar(255)
                   constraints:
@@ -34,6 +39,9 @@ databaseChangeLog:
             tableName: room
             columns:
               - column:
+                  name: room_name
+                  value: "Test room"
+              - column:
                   name: country_name
                   value: "Russia"
               - column:
@@ -43,6 +51,9 @@ databaseChangeLog:
             tableName: room
             columns:
               - column:
+                    name: room_name
+                    value: "Test room bel"
+              - column:
                   name: country_name
                   value: "Belarus"
               - column:
@@ -51,4 +62,4 @@ databaseChangeLog:
       rollback:
         - delete:
             tableName: room
-            where: country_name in ('Russia', 'Belarus', 'Japan')
+            where: country_name in ('Russia', 'Belarus')

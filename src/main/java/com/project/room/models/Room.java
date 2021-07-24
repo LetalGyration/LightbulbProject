@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 @Getter
 @Setter
-@Accessors(chain=true)
+@Accessors(chain=true) // check
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,6 +23,9 @@ public class Room implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="room_id", nullable = false)
     private int id;
+
+    @Column(name="room_name", nullable = false)
+    private String name;
 
     @Column(name="country_name", nullable = false)
     @NotEmpty(message="Country is required")

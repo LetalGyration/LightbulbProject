@@ -3,6 +3,8 @@ package com.project.room.services;
 import com.project.room.models.Room;
 import com.project.room.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +31,10 @@ public class RoomService implements IRoom{
     @Override
     public Room addRoom(Room room) {
         return roomRepo.save(room);
+    }
+
+    @Override
+    public void updateStatus(int id, byte status) {
+        roomRepo.updateStatus(id, status);
     }
 }
