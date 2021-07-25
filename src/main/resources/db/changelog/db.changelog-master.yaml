@@ -26,7 +26,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: status
-                  type: tinyint(1)
+                  type: boolean
                   constraints:
                     nullable: false
 
@@ -46,7 +46,7 @@ databaseChangeLog:
                   value: "Russia"
               - column:
                   name: status
-                  value: 0
+                  value: false
         - insert:
             tableName: room
             columns:
@@ -58,7 +58,7 @@ databaseChangeLog:
                   value: "Belarus"
               - column:
                   name: status
-                  value: 0
+                  value: false
       rollback:
         - delete:
             tableName: room

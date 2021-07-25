@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from 'src/app/models/room.model';
 import { RoomService } from 'src/app/services/room.service';
+import { getNames } from 'country-list'
 
 @Component({
   selector: 'app-add-room',
@@ -8,10 +9,11 @@ import { RoomService } from 'src/app/services/room.service';
   styleUrls: ['./add-room.component.css']
 })
 export class AddRoomComponent implements OnInit {
+  countryList = getNames();
 
   room: Room = {
-    room_name: '',
-    country_name: '',
+    name: '',
+    countryName: '',
     status: 0
   };
   submitted = false;
@@ -23,8 +25,8 @@ export class AddRoomComponent implements OnInit {
 
   saveRoom(): void {
     const data = {
-      room_name: this.room.room_name,
-      country_name: this.room.country_name
+      name: this.room.name,
+      countryName: this.room.countryName
     };
 
     this.roomService.create(data).subscribe(
@@ -40,8 +42,8 @@ export class AddRoomComponent implements OnInit {
   newRoom(): void {
     this.submitted = false;
     this.room = {
-      room_name: '',
-      country_name: '',
+      name: '',
+      countryName: '',
       status: false
     }
   }

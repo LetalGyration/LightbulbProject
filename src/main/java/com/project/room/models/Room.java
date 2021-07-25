@@ -33,5 +33,5 @@ public class Room implements Serializable {
 
     @Column(name="status", nullable = false)
     @NotEmpty(message="Status is required")
-    private byte status;
+    private boolean status;
 }

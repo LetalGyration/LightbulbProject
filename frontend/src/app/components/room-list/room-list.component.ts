@@ -12,11 +12,12 @@ export class RoomListComponent implements OnInit {
   rooms?: Room[];
   currentRoom: Room = {};
   currentIndex = -1;
+  public isConnected: boolean = false;
 
   constructor(private roomService: RoomService) { }
 
   ngOnInit(): void {
-
+    this.retrieveRooms()
   }
 
   retrieveRooms(): void {
@@ -24,6 +25,8 @@ export class RoomListComponent implements OnInit {
       data => {
         this.rooms = data;
         console.log(data);
+        console.log("peepoPooPoo");
+        this.isConnected = true;
       },
       error => {
         console.log(error);

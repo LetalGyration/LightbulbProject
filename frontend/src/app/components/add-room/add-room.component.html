@@ -8,25 +8,24 @@
             class="form-control"
             id="title"
             required
-            [(ngModel)]="room.room_name"
+            [(ngModel)]="room.name"
             name="title"
           />
         </div>
-  
+
         <div class="form-group">
           <label for="description">Country name</label>
-          <input
-            class="form-control"
-            id="description"
-            required
-            [(ngModel)]="room.country_name"
-            name="description"
-          />
+          <select id = "description" [(ngModel)]="room.countryName">
+            <option *ngFor="let country of countryList" [value]="country">
+                {{country}}
+            </option>
+          </select>
+
         </div>
-  
+
         <button (click)="saveRoom()" class="btn btn-success">Submit</button>
       </div>
-  
+
       <div *ngIf="submitted">
         <h4>Room was submitted successfully!</h4>
         <button class="btn btn-success" (click)="newRoom()">Add</button>

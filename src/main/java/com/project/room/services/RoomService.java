@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoomService implements IRoom{
+public class RoomService implements IRoom {
+
     RoomRepository roomRepo;
+
     @Autowired
     public RoomService(RoomRepository roomRepo) {
         this.roomRepo = roomRepo;
@@ -34,7 +36,12 @@ public class RoomService implements IRoom{
     }
 
     @Override
-    public void updateStatus(int id, byte status) {
-        roomRepo.updateStatus(id, status);
+    public void activate(int id) {
+        roomRepo.activate(id);
+    }
+
+    @Override
+    public void deactivate(int id) {
+        roomRepo.deactivate(id);
     }
 }

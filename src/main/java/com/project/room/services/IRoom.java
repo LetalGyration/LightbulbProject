@@ -6,8 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IRoom {
+
     List<Room> getAllRooms();
+
     Optional<Room> findById(int id);
+
     Room addRoom(Room room);
-    void updateStatus(int id, byte status);
+
+    void activate(int id);
+
+    void deactivate(int id);
 }

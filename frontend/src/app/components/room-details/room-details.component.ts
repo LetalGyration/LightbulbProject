@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { RoomService } from 'src/app/services/room.service';
-import { Room } from 'src/app/models/room.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {RoomService} from 'src/app/services/room.service';
+import {Room} from 'src/app/models/room.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-room-details',
@@ -11,18 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RoomDetailsComponent implements OnInit {
 
   currentRoom: Room = {
-    room_name: '',
-    country_name: '',
+    name: '',
+    countryName: '',
     status: 0
   };
-  message = '';
+
   constructor(
     private roomService: RoomService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+  ) {
+  }
 
   ngOnInit(): void {
-    this.message = '';
     this.getRoom(this.route.snapshot.params.id);
   }
 
@@ -38,12 +39,28 @@ export class RoomDetailsComponent implements OnInit {
     )
   }
 
-  updateStatus(newStatus: boolean): void {
-    const data = {
-      room_name: this.currentRoom.room_name,
-      country_name: this.currentRoom.country_name,
-      status: newStatus
-    };
+  activateStatus(): void {
+    this.roomService.activate(this.currentRoom.id).subscribe(
+      data => {
+        this.currentRoom.status = true;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  deactivateStatus(): void {
+    this.roomService.deactivate(this.currentRoom.id).subscribe(
+      data => {
+        this.currentRoom.status = false;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }
 
