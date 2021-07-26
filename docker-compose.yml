@@ -10,6 +10,7 @@ services:
 
 
     environment:
+      - POSTGRES_DB=room
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
 
@@ -18,12 +19,14 @@ services:
     container_name: backend
 
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/room
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=12345
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+      - DB_SERVER=db-postgres
+      - POSTGRES_DB=room
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
     ports:
       - 8080:8080
+    links:
+      -db-postgres
 
   frontend:
     build: ./frontend/

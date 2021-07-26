@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Room } from '../models/room.model';
+import { environment } from "../../environments/environment";
 
-const baseUrl = 'http://localhost:8080/api/rooms';
-
+const baseUrl = environment + '/api/rooms';
 @Injectable({
   providedIn: 'root'
 })
