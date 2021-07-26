@@ -27,7 +27,6 @@ public class RoomController {
 
     @GetMapping(value = "/rooms")
     public List<Room> getAllRooms() {
-        System.out.println("Working");
         return roomService.getAllRooms();
     }
 
