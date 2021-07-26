@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="RoomApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="RoomProject" />
+    <module name="room" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.room.RoomApplication" />
     <option name="VM_PARAMETERS" value="-Djava.net.preferIPv4Stack=true" />
     <option name="ALTERNATIVE_JRE_PATH" />
