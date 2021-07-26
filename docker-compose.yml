@@ -26,7 +26,7 @@ services:
     ports:
       - 8080:8080
     links:
-      -db-postgres
+      - db-postgres
 
   frontend:
     build: ./frontend/
