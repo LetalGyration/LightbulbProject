@@ -13,4 +13,9 @@ public class RoomNotFoundException extends RuntimeException {
     public RoomNotFoundException(String errorMessage) {
         super(errorMessage);
     }
+
+    @Override
+    public synchronized Throwable fillInStackTrace() {
+        return this;
+    }
 }

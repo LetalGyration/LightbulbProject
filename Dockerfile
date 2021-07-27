@@ -7,5 +7,4 @@ RUN mvn -DskipTests=true -f pom.xml clean package
 
 FROM adoptopenjdk:16-jre-hotspot
 COPY --from=build /workspace/target/*.jar room.jar
-EXPOSE 8080
 ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-jar", "room.jar"]

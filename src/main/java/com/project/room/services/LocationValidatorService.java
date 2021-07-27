@@ -18,10 +18,8 @@ public class LocationValidatorService implements ILocationValidator {
             response = "Belarus";
         }
 
-        //System.out.println(response);
-
         if (!response.equals(roomCountry)) {
-            throw new InvalidLocationException();
+            throw new InvalidLocationException("Room country not equals to your country");
         }
     }
 }

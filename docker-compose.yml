@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -6,32 +6,46 @@ services:
     image: "postgres:13.3"
     container_name: db-postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
 
 
     environment:
       - POSTGRES_DB=room
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
+    networks:
+      - backend
 
   backend:
     build: ./
-    container_name: backend
 
     environment:
-      - DB_SERVER=db-postgres
-      - POSTGRES_DB=room
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=12345
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/room
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=12345
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
     ports:
-      - 8080:8080
-    links:
+      - "8080:8080"
+    depends_on:
       - db-postgres
+    networks:
+      - backend
+      - frontend
 
   frontend:
-    build: ./frontend/
-    container_name: frontend
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
+      args:
+        API_BASE_URL: https://127.0.0.1:8080/
     ports:
-      - 8081:8081
-    links:
+      - "8081:80"
+    restart: always
+    depends_on:
       - backend
+    networks:
+      - frontend
+
+networks:
+  backend:
+  frontend:

@@ -1,6 +1,9 @@
 package com.project.room.controllers;
 
 import com.project.room.models.Room;
+import com.project.room.models.RoomDTO;
+import com.project.room.services.ILocationValidator;
+import com.project.room.services.IRoom;
 import com.project.room.services.LocationValidatorService;
 import com.project.room.services.RoomService;
 import com.project.room.utils.RoomNotFoundException;
@@ -16,8 +19,8 @@ import java.util.List;
 @RequestMapping("/api")
 public class RoomController {
 
-    LocationValidatorService locationService;
-    RoomService roomService;
+    ILocationValidator locationService;
+    IRoom roomService;
 
     @Autowired
     public RoomController(RoomService roomService, LocationValidatorService locationService) {
@@ -39,8 +42,8 @@ public class RoomController {
     }
 
     @PostMapping(value = "/rooms")
-    public Room addRoom(@Valid @RequestBody Room room) {
-        return roomService.addRoom(room);
+    public Room addRoom(@Valid @RequestBody RoomDTO roomDTO) {
+        return roomService.addRoom(roomDTO);
     }
 
     @PutMapping(value = "/rooms/{id}/activate")
