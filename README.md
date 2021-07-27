@@ -1,5 +1,5 @@
 # LightbulbProject
-As already stated this project is an implementation of such board and made of 3 separate Docker containers that holds:
+As already stated this project is an implementation of such list with rooms and made of 3 separate Docker containers that holds:
 
 - PostgreSQL database
 - Java backend (Spring Boot)
