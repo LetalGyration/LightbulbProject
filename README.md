@@ -1,32 +1,31 @@
 # LightbulbProject
-As already stated this project is an implementation of such list with rooms and made of 3 separate Docker containers that holds:
+As already stated this project is an implementation of list with rooms and made of 3 separate Docker containers that holds:
 
 - PostgreSQL database
 - Java backend (Spring Boot)
 - Angular frontend
 
-The entry point for a user is a website which is available under the
-address: **http://localhost:8081/**
+The entry point for a regular user is a website which is available with: **http://localhost:8081/**
 ### Prerequisites
 
 In order to run this application you need to install two tools: **Docker** & **Docker Compose**.
 
 Instructions how to install **Docker** on [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Windows](https://docs.docker.com/docker-for-windows/install/) , [Mac](https://docs.docker.com/docker-for-mac/install/) .
 
-**Dosker Compose** is already included in installation packs for *Windows* and *Mac*, so only Ubuntu users needs to follow [this instructions](https://docs.docker.com/compose/install/) .
+**Dosker Compose** is already included in installation packs for *Windows* and *Mac*, so only Linux users needs to follow [this instructions](https://docs.docker.com/compose/install/) .
 
 
 
 
 ### How to run it?
 
-An entire application can be ran with a single command in a terminal:
+An entire application can be started with a single command in a terminal:
 
 ```
 $ docker-compose up
 ```
 
-If you want to stop it use following command:
+If you want to stop it use the following command:
 
 ```
 $ docker-compose down
@@ -43,7 +42,7 @@ After running the app it can be accessible using this connectors:
 - Password: *12345*
 
 
-Like other parts of application Postgres database is containerized and
+Like other parts of the application Postgres database is containerized and
 the definition of its Docker container can be found in
 *docker-compose.yml* file.
 
@@ -54,8 +53,7 @@ the definition of its Docker container can be found in
     ports:
       - "5432:5432"
 
-
-    environment:
+  environment:
       - POSTGRES_DB=room
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
@@ -68,17 +66,34 @@ the definition of its Docker container can be found in
 #### Backend
 
 This is a Spring Boot (Java) based application that connects with a
-database that and expose the REST endpoints that can be consumed by
+database and expose the REST endpoints that can be used by
 frontend. It supports multiple HTTP REST methods like GET, POST, PUT for resource - room.
 
-This app is also put in Docker container and its definition can be found
+![изображение](https://user-images.githubusercontent.com/70664562/127368612-6e5e92b6-83c0-4097-82b6-d356ff90969e.png)
+
+
+This app is also dockerized and its definition can be found
 in a file *Dockerfile*. 
 
 
 
 #### Frontend
 
-This is a real endpoint for a user where they can manipulate rooms. It consumes the REST API endpoints provided by
-backend.
+This is a real entrypoint for a user where they can manipulate rooms. It consumes the REST API endpoints provided by
+the backend.
 
 It can be entered using link: **http://localhost:8081/**
+
+#### Enpoints
+
+- GET - */api/rooms*
+- GET - */api/rooms/id*
+- POST - */api/rooms*
+- PUT - */api/rooms/id/activate*
+- PUT - */api/rooms/id/deactivate*
+
+#### Improvements
+
+Opportunities to improve the application:
+1. use Amazon s3 to work with images
+2. Improve the auto-update of the bulb component using sockets.
