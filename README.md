@@ -53,8 +53,7 @@ the definition of its Docker container can be found in
     ports:
       - "5432:5432"
 
-
-    environment:
+  environment:
       - POSTGRES_DB=room
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
@@ -69,6 +68,9 @@ the definition of its Docker container can be found in
 This is a Spring Boot (Java) based application that connects with a
 database and expose the REST endpoints that can be used by
 frontend. It supports multiple HTTP REST methods like GET, POST, PUT for resource - room.
+
+![изображение](https://user-images.githubusercontent.com/70664562/127368612-6e5e92b6-83c0-4097-82b6-d356ff90969e.png)
+
 
 This app is also dockerized and its definition can be found
 in a file *Dockerfile*. 
@@ -93,5 +95,5 @@ It can be entered using link: **http://localhost:8081/**
 #### Improvements
 
 Opportunities to improve the application:
-1. using Amazon s3 to work with images
-2. Improving the auto-update of the bulb component using sockets.
+1. use Amazon s3 to work with images
+2. Improve the auto-update of the bulb component using sockets.
