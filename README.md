@@ -84,10 +84,10 @@ It can be entered using link: **http://localhost:8081/**
 
 #### Enpoints
 
-GET - */api/rooms*
-GET - */api/rooms/id*
-POST - */api/rooms*
-PUT - */api/rooms/id/*
+- GET - */api/rooms*
+- GET - */api/rooms/id*
+- POST - */api/rooms*
+- PUT - */api/rooms/id/*
 
 #### Improvements
 
