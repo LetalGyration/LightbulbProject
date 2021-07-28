@@ -87,7 +87,8 @@ It can be entered using link: **http://localhost:8081/**
 - GET - */api/rooms*
 - GET - */api/rooms/id*
 - POST - */api/rooms*
-- PUT - */api/rooms/id/*
+- PUT - */api/rooms/id/activate*
+- PUT - */api/rooms/id/deactivate*
 
 #### Improvements
 
