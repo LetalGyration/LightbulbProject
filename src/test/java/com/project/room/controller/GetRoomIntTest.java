@@ -11,10 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GetByIdRoomITCase extends CommonITCase {
+public class GetRoomIntTest extends CommonIntBase {
 
     @Test
     public void whenGetSingleRoomById_thenReceiveSingleRoom() {
+
         Room room = saveSingleRandomRoom();
 
         ResponseEntity<Room> response = this.restTemplate.exchange(
@@ -23,6 +24,7 @@ public class GetByIdRoomITCase extends CommonITCase {
                 new HttpEntity<>(new HttpHeaders()), Room.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
+
         assertEquals(room.getId(), response.getBody().getId());
         assertEquals(room.getName(), response.getBody().getName());
         assertEquals(room.getCountryName(), response.getBody().getCountryName());
@@ -30,6 +32,7 @@ public class GetByIdRoomITCase extends CommonITCase {
 
     @Test
     public void whenGetSingleRoomByIdWithInvalidId_thenReturnNotFound() {
+
         ResponseEntity<Room> response = this.restTemplate.exchange(
                 baseUrl + "rooms/-1", HttpMethod.GET,
                 new HttpEntity<>(new HttpHeaders()), Room.class);

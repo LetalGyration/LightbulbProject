@@ -24,6 +24,7 @@ public class RoomController {
 
     @Autowired
     public RoomController(RoomService roomService, LocationValidatorService locationService) {
+
         this.roomService = roomService;
         this.locationService = locationService;
     }
@@ -36,8 +37,10 @@ public class RoomController {
     @GetMapping(value = "/rooms/{id}")
     public Room getRoomById(@PathVariable("id") @Min(1) int id, HttpServletRequest request) {
 
-        Room room = roomService.findById(id).orElseThrow(() -> new RoomNotFoundException("Room with " + id + " Not Found!"));
+        Room room = roomService.findById(id).orElseThrow(
+                () -> new RoomNotFoundException("Room with " + id + " Not Found!"));
         locationService.validateLocation(request.getRemoteAddr(), room.getCountryName());
+
         return room;
     }
 

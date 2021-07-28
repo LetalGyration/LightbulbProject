@@ -11,11 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PutRoomITCase extends CommonITCase {
+public class PutRoomIntTest extends CommonIntBase {
+
     private Room room;
 
     @Test
     public void whenPutActivateSingleRoom_thenIsUpdated() {
+
         room = saveSingleRandomRoom();
         room.setStatus(true);
 
@@ -31,6 +33,7 @@ public class PutRoomITCase extends CommonITCase {
 
     @Test
     public void whenPutDeactivateSingleRoom_thenIsUpdated() {
+
         room = saveSingleRandomRoom();
         room.setStatus(false);
 

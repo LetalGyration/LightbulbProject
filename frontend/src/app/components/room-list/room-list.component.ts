@@ -24,8 +24,6 @@ export class RoomListComponent implements OnInit {
     this.roomService.getAll().subscribe(
       data => {
         this.rooms = data;
-        console.log(data);
-        console.log("peepoPooPoo");
         this.isConnected = true;
       },
       error => {
@@ -33,15 +31,8 @@ export class RoomListComponent implements OnInit {
       });
   }
 
-  refreshList(): void {
-    this.retrieveRooms();
-    this.currentRoom = {};
-    this.currentIndex = -1;
-  }
-
   setActiveRoom(room: Room, index: number): void {
     this.currentRoom = room;
     this.currentIndex = index;
   }
-
 }

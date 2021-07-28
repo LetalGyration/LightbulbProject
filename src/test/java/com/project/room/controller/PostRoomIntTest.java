@@ -11,10 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostRoomITCase extends CommonITCase {
+public class PostRoomIntTest extends CommonIntBase {
 
     @Test
     public void whenPostSingleRoom_thenIsStoredInDb() {
+
         Room room = createSingleRoom();
 
         ResponseEntity<Room> response = this.restTemplate.exchange(

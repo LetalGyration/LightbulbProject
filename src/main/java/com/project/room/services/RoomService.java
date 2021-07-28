@@ -4,8 +4,6 @@ import com.project.room.models.Room;
 import com.project.room.models.RoomDTO;
 import com.project.room.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,10 +46,12 @@ public class RoomService implements IRoom {
 
 
     private Room convertDTOToRoom(RoomDTO roomDTO){
+
         Room room = new Room();
         room.setName(roomDTO.getName());
         room.setCountryName(roomDTO.getCountryName());
         room.setStatus(roomDTO.isStatus());
+
         return room;
     }
 }

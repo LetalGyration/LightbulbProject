@@ -9,6 +9,7 @@ import { getNames } from 'country-list'
   styleUrls: ['./add-room.component.css']
 })
 export class AddRoomComponent implements OnInit {
+
   countryList = getNames();
 
   room: Room = {
@@ -16,12 +17,12 @@ export class AddRoomComponent implements OnInit {
     countryName: '',
     status: 0
   };
+
   submitted = false;
 
   constructor(private roomService: RoomService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   saveRoom(): void {
     const data = {
@@ -47,5 +48,4 @@ export class AddRoomComponent implements OnInit {
       status: false
     }
   }
-
 }

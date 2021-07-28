@@ -7,8 +7,6 @@ services:
     container_name: db-postgres
     ports:
       - "5432:5432"
-
-
     environment:
       - POSTGRES_DB=room
       - POSTGRES_USER=postgres
@@ -18,7 +16,6 @@ services:
 
   backend:
     build: ./
-
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/room
       - SPRING_DATASOURCE_USERNAME=postgres

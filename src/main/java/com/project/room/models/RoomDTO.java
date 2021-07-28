@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoomDTO {
+
     private String name;
     private String countryName;
     private boolean status;

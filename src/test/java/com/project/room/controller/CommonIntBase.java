@@ -10,7 +10,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 import java.util.Optional;
 
-public class CommonITCase {
+public class CommonIntBase {
+
     @Autowired
     private RoomRepository roomRepository;
 
@@ -27,16 +28,19 @@ public class CommonITCase {
         baseUrl = "http://localhost:" + port + "/api/";
     }
 
-    protected Room createSingleRoom(){
+    protected Room createSingleRoom() {
+
         Room room = new Room();
-        int random = (int)(Math.random() * 100 + 1);
+        int random = (int) (Math.random() * 100 + 1);
         room.setName("Test Room " + random);
         room.setCountryName("Belarus");
         room.setStatus(false);
+
         return room;
     }
 
     protected RoomDTO convertRoomToDTO(Room room) {
+
         return new RoomDTO().builder()
                 .name(room.getName())
                 .countryName(room.getCountryName())

@@ -11,12 +11,13 @@ import lombok.experimental.Accessors;
 
 @Getter
 @Setter
-@Accessors(chain=true) // check
+@Accessors(chain=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name="room")
 public class Room implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id

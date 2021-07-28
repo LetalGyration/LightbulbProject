@@ -16,10 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GetAllRoomsITCase extends CommonITCase {
+public class ListRoomsIntTest extends CommonIntBase {
 
     @Test
     public void whenGetAllRooms_thenReceiveSingleRoom() {
+
         saveSingleRandomRoom();
 
         ResponseEntity<List<Room>> response = this.restTemplate.exchange(
@@ -27,6 +28,7 @@ public class GetAllRoomsITCase extends CommonITCase {
                 HttpMethod.GET,
                 new HttpEntity<>(new HttpHeaders()),
                 new ParameterizedTypeReference<List<Room>>() {});
+
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response.getBody().size() >= 1);
     }
