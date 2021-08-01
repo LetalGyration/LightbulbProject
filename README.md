@@ -95,5 +95,5 @@ It can be entered using link: **http://localhost:8081/**
 #### Improvements
 
 Opportunities to improve the application:
-1. use Amazon s3 to work with images
-2. Improve the auto-update of the bulb component using sockets.
+1. use Amazon s3 to work with images.
+2. Improve the auto-update of the bulb component using sockets (implemented in unstable-websockets branch).
