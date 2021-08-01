@@ -8,6 +8,8 @@ import com.project.room.services.LocationValidatorService;
 import com.project.room.services.RoomService;
 import com.project.room.utils.RoomNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -21,10 +23,12 @@ public class RoomController {
 
     ILocationValidator locationService;
     IRoom roomService;
+    SimpMessagingTemplate template;
 
     @Autowired
-    public RoomController(RoomService roomService, LocationValidatorService locationService) {
+    public RoomController(RoomService roomService, LocationValidatorService locationService, SimpMessagingTemplate template) {
 
+        this.template = template;
         this.roomService = roomService;
         this.locationService = locationService;
     }
@@ -52,10 +56,12 @@ public class RoomController {
     @PutMapping(value = "/rooms/{id}/activate")
     public void activate(@PathVariable("id") @Min(1) int id) {
         roomService.activate(id);
+        this.template.convertAndSend("/topic/notification", id);
     }
 
     @PutMapping(value = "/rooms/{id}/deactivate")
     public void deactivate(@PathVariable("id") @Min(1) int id) {
         roomService.deactivate(id);
+        this.template.convertAndSend("/topic/notification", id);
     }
 }
