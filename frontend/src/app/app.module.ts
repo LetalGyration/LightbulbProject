@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AddRoomComponent } from './components/add-room/add-room.component';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import {WebSocketService} from "./components/room-details/websocket.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [WebSocketService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
