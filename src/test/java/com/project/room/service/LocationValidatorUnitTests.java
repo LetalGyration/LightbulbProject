@@ -1,7 +1,6 @@
 package com.project.room.service;
 
 import com.project.room.services.LocationValidatorService;
-import com.project.room.services.RoomService;
 import com.project.room.utils.InvalidIpAddressException;
 import com.project.room.utils.InvalidLocationException;
 import org.junit.Before;
@@ -27,7 +26,6 @@ public class LocationValidatorUnitTests {
 
     @Test(expected = InvalidIpAddressException.class)
     public void whenInvalidIp_thenThrownInvalidIpAddress() {
-
         service.validateLocation("2.16.103", "Russia");
     }
 }
