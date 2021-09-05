@@ -55,12 +55,16 @@ public class RoomController {
 
     @PutMapping(value = "/rooms/{id}/activate")
     public void activate(@PathVariable("id") @Min(1) int id) {
+        roomService.findById(id).orElseThrow(
+                () -> new RoomNotFoundException("Room with " + id + " Not Found!"));
         roomService.activate(id);
         this.template.convertAndSend("/topic/notification", id);
     }
 
     @PutMapping(value = "/rooms/{id}/deactivate")
     public void deactivate(@PathVariable("id") @Min(1) int id) {
+        roomService.findById(id).orElseThrow(
+                () -> new RoomNotFoundException("Room with " + id + " Not Found!"));
         roomService.deactivate(id);
         this.template.convertAndSend("/topic/notification", id);
     }
