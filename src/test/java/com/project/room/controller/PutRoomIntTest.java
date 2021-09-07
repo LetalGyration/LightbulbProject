@@ -32,6 +32,15 @@ public class PutRoomIntTest extends CommonIntBase {
     }
 
     @Test
+    public void whenPutInvalidIdSingleRoom_thenReturnNotFound() {
+        ResponseEntity<String> response = this.restTemplate.exchange(
+                baseUrl + "rooms/-1/activate", HttpMethod.PUT,
+                new HttpEntity<>(new HttpHeaders()), String.class);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
     public void whenPutDeactivateSingleRoom_thenIsUpdated() {
 
         room = saveSingleRandomRoom();
